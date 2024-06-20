@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        span {
+            display: block;
+        }
+
+        .cont {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+
+        }
+
+        .canvas {
+            margin: 100px auto 100px;
+            width: 80%;
+            text-align: center;
+        }
+
+        .button {
+            width: 100px;
+            height: 100px;
+            border: solid black 2px;
+            display: inline-block;
+        }
+
+        #grey {
+            background: grey;
+        }
+
+        #white {
+            background: white;
+        }
+
+        #blue {
+            background: blue;
+        }
+
+        #yellow {
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cont">
+        <h1>Color Scheme Switcher</h1>
+        <div>
+            <span class="button" id="grey"></span>
+            <span class="button" id="yellow"></span>
+        </div>
+    </div>
+    <button id="BGCOLORCHANGE">RandomBG</button>
+    <!-- JS Code -->
+    <script>
+        let buttons = document.querySelectorAll(".button")
+        let body = document.querySelector('body')
+        let h1 = document.querySelector('h1')
+
+        buttons.forEach(function (button) {
+            button.addEventListener('click', function (e) {
+                console.log(e.target);
+
+                if (e.target.id === 'grey') {
+                    // body.style.backgroundColor = e.target.id;
+                    body.style.backgroundColor = '#242543';
+                    h1.style.color = '#ffffff';
+                }
+                if (e.target.id === 'yellow') {
+                    // body.style.backgroundColor = e.target.id;
+                    body.style.backgroundColor = e.target.id;
+                    h1.style.color = '#000000';
+                }
+            })
+        })
+
+        // 
+        let a = document.getElementById('BGCOLORCHANGE')
+        let ramdonColor = () => {
+            let value = "0123456789ABCDEF";
+            let hasesh = "#";
+
+            for (let i = 0; i < 6; i++) {
+                hasesh = hasesh + value[Math.floor(Math.random() *16)]
+            };
+            return hasesh;
+        }
+        console.log(ramdonColor());
+
+        function changeBG() {
+            document.body.style.backgroundColor = ramdonColor();
+        }
+        a.addEventListener("click", changeBG)
+
+        // Second option (NOT RECOMENDED)har jagaha click karne per bgColor Change horahe
+        // let hola = addEventListener("click",()=>{
+        //     document.body.style.backgroundColor =ramdonColor() ;
+        // })
+
+
+    </script>
+</body>
+
+</html>

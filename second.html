@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Random Color</h1>
+    <div id="obito" style="height: 150px; width: 150px; border: 2px solid red; text-align: center;align-items: center;align-content: center;">Obito Uchiha</div>
+
+    <button id="Button">Box BG Change</button>
+ 
+
+    <script>
+        let Button = document.getElementById('Button') 
+        // let obito = document.getElementById('obito') 
+
+        let random =()=>{
+            let value = "0123456789ABCDEF"
+            let hass = "#"
+
+            for( let i=0; i<6; i++){
+                hass = hass+value[Math.floor(Math.random() *16)]
+            }
+            return hass;
+        }
+        console.log(random);
+        
+        function changeBG (){
+            document.getElementById('obito').style.backgroundColor=random();
+        }
+        Button.addEventListener("click",changeBG)
+
+    </script>
+</body>
+</html>
